@@ -86,11 +86,11 @@ Bureaucracy involves changing rules and messy, conditional cases that hardcoded 
 
 **What does your agent decide or do on its own?**
 
-It identifies which bureaucracy domain applies from your request, diffs your document vault against current requirements to find what's missing, picks whether to answer directly or call a tool (fetch a document, query live rules, submit a form), and judges when an action is safe to auto-run vs. needs your confirmation.
+It autonomously determines user intent from conversational text, queries the vault for applicable proofs, evaluates compliance, detects missing requirements, triggers alerts, and chooses appropriate API tools to execute submissions.
 
 **Why wouldn't a fixed script, if-else rules, or a simple chatbot be enough?**
 
-Bureaucracy rules change often (visa thresholds, tax slabs) — hardcoded if-else goes stale fast and can't be updated without a redeploy. A chatbot can't remember your documents across sessions or take action for you. Real cases also involve messy, conditional logic (duration, income, nationality) that doesn't reduce cleanly to static rules.
+Unstructured user inputs have varying context. Chatbots cannot safely call APIs or verify requirements, while fixed if-else scripts fail when documents satisfy multiple overlapping domain standards.
 
 ---
 
