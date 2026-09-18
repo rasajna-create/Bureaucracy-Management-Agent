@@ -2,7 +2,7 @@
 
 ## 1. Team Details
 
-**Team Name / ID:** Team Cybotic / 
+**Team Name / ID:** Team Cybotic
 
 **Team Lead:** Mohammed Rehan
 
