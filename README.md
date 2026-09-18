@@ -129,9 +129,9 @@ Max 80 characters per cell. Replace the example row with your own.
 
 | What Changes | Today | With Our Current Build | At Production Scale |
 |--------------|-------|------------------------|---------------------|
-| [e.g. Time to answer a student query] | [e.g. 2–3 days over email] | [e.g. Instant for fee questions only] | [e.g. Under a minute for most queries] |
-| [...] | [...] | [...] | [...] |
-| [...] | [...] | [...] | [...] |
+| Document gap analysis |	2–5 hours of manual reading |	Instant automated checklist match |	Zero-click real-time compliance sync |
+| Data privacy risk |	Plain files sent over unencrypted email |	Deterministic regex PII masking |	Hardware-level secure enclave processing |
+| Application submission | Manual multi-page portal re-entry |	Single-trigger automated API payload |	End-to-end direct government API dispatch |
 
 ---
 
@@ -164,9 +164,9 @@ Example:
 - **Answer Agent:** Answers policy questions from college documents and files a ticket when approval is needed. Uses Claude Sonnet because it handles long policy text and reasons well about exceptions. Talks to College Docs Store and Helpdesk Ticket API.
 -->
 
-- **[Planner Agent]:** [Parses the user's request, identifies the bureaucracy domain, and breaks it into steps. Claude Sonnet — strong structured intent classification. Talks to the Requirements Diff Engine and Context Store.]
-- **[Tool-Calling Agent]:** [Decides which tool to invoke — vault fetch, RAG rule lookup, or external API (bank, embassy, GST portal). Claude Sonnet with function-calling. Talks to Action Gateway and Vector DB.]
-- **[Reasoning Agent]:** [Diffs what the user has against what's required, ranks missing items, and drafts the plain-language answer. Claude Sonnet. Talks to Context Store and Case State Machine.]
+- **Planner Agent:** Parses the user's request, identifies the bureaucracy domain, and breaks it into steps. Claude Sonnet — strong structured intent classification. Talks to the Requirements Diff Engine and Context Store.
+- **Tool-Calling Agent:** Decides which tool to invoke — vault fetch, RAG rule lookup, or external API (bank, embassy, GST portal). Claude Sonnet with function-calling. Talks to Action Gateway and Vector DB.
+- **Reasoning Agent:** Diffs what the user has against what's required, ranks missing items, and drafts the plain-language answer. Claude Sonnet. Talks to Context Store and Case State Machine.
 
 ### 7.2 Services, APIs, Databases & Memory
 
@@ -181,11 +181,11 @@ Example:
 - **Web Chat (Streamlit):** Where students type questions and see answers. Talks to the Triage Agent.
 -->
 
-- **[PostgreSQL (database)]:** [Stores users, documents, cases, requirements. Used by every agent for structured lookups.]
-- **[Pinecone/pgvector (vector DB)]:** [ndexes bureaucracy rule text for RAG retrieval. Used by Tool-Calling Agent.]
-- **[S3/MinIO (storage)]:** [Holds encrypted document files; DB stores pointers only. Used by the vault layer.]
-- **[Vault/KMS (secrets)]:** [Holds encryption keys and third-party API credentials. Used by Security Middleware.]
-- **[Temporal (workflow engine)]:** [Runs long-running actions (visa submission, status polling) with retries. Used by Action Gateway.]
+- **PostgreSQL (database):** Stores users, documents, cases, requirements. Used by every agent for structured lookups.
+- **Pinecone/pgvector (vector DB):** ndexes bureaucracy rule text for RAG retrieval. Used by Tool-Calling Agent.
+- **S3/MinIO (storage):** Holds encrypted document files; DB stores pointers only. Used by the vault layer.
+- **Vault/KMS (secrets):** Holds encryption keys and third-party API credentials. Used by Security Middleware.
+- **Temporal (workflow engine):** Runs long-running actions (visa submission, status polling) with retries. Used by Action Gateway.
 
 **How does your system remember things (memory & state)?**
 
@@ -197,7 +197,7 @@ Tickets are saved in SQLite so students can check their status later.
 
 User facts and documents persist in Postgres across sessions — income entered for a loan case is reused for a GST case. Case status is tracked in an explicit state machine, not just chat history.
 
-**Diagram Link (Optional):** [Link to a photo or drawing of your architecture, or N/A]
+**Diagram Link (Optional):** N/A
 
 ### 7.3 Example Walkthrough
 
