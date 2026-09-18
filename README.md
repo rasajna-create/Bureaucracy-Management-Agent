@@ -149,7 +149,7 @@ Students ask questions in a web chat. A Triage Agent sorts each message, an Answ
 replies using college policy documents, and anything needing a human becomes a helpdesk ticket.
 -->
 
-[Your answer (max 400 characters)]
+Seven shared layers (auth, security, storage, rules engine, actions, state machine, orchestrator) sit under pluggable domain modules (visa, loan, GST, license). Every domain reuses the same vault, RAG rules engine, and action gateway — no domain-specific forks in the core.
 
 ### 7.1 Agents
 
@@ -162,8 +162,9 @@ Example:
 - **Answer Agent:** Answers policy questions from college documents and files a ticket when approval is needed. Uses Claude Sonnet because it handles long policy text and reasons well about exceptions. Talks to College Docs Store and Helpdesk Ticket API.
 -->
 
-- **[Agent name]:** [Job, model and why, what it talks to (max 300 characters)]
-- **[Agent name]:** [Job, model and why, what it talks to (max 300 characters)]
+- **[Planner Agent]:** [Parses the user's request, identifies the bureaucracy domain, and breaks it into steps. Claude Sonnet — strong structured intent classification. Talks to the Requirements Diff Engine and Context Store.]
+- **[Tool-Calling Agent]:** [Decides which tool to invoke — vault fetch, RAG rule lookup, or external API (bank, embassy, GST portal). Claude Sonnet with function-calling. Talks to Action Gateway and Vector DB.]
+- **[Reasoning Agent]:** [Diffs what the user has against what's required, ranks missing items, and drafts the plain-language answer. Claude Sonnet. Talks to Context Store and Case State Machine.]
 
 ### 7.2 Services, APIs, Databases & Memory
 
@@ -178,8 +179,11 @@ Example:
 - **Web Chat (Streamlit):** Where students type questions and see answers. Talks to the Triage Agent.
 -->
 
-- **[Name (type)]:** [What it does and who uses it (max 150 characters)]
-- **[Name (type)]:** [What it does and who uses it (max 150 characters)]
+- **[PostgreSQL (database)]:** [Stores users, documents, cases, requirements. Used by every agent for structured lookups.]
+- **[Pinecone/pgvector (vector DB)]:** [ndexes bureaucracy rule text for RAG retrieval. Used by Tool-Calling Agent.]
+- **[S3/MinIO (storage)]:** [Holds encrypted document files; DB stores pointers only. Used by the vault layer.]
+- **[Vault/KMS (secrets)]:** [Holds encryption keys and third-party API credentials. Used by Security Middleware.]
+- **[Temporal (workflow engine)]:** [Runs long-running actions (visa submission, status polling) with retries. Used by Action Gateway.]
 
 **How does your system remember things (memory & state)?**
 
@@ -189,7 +193,7 @@ Each chat keeps its last 10 messages in session memory so follow-up questions ma
 Tickets are saved in SQLite so students can check their status later.
 -->
 
-[Your answer, or "No memory:" plus the reason (max 250 characters)]
+User facts and documents persist in Postgres across sessions — income entered for a loan case is reused for a GST case. Case status is tracked in an explicit state machine, not just chat history.
 
 **Diagram Link (Optional):** [Link to a photo or drawing of your architecture, or N/A]
 
@@ -212,14 +216,14 @@ Example:
 **Final output:** A clear answer quoting the late-fee policy, plus a ticket raised with the accounts office.
 -->
 
-**Example input:** [What enters your system (max 150 characters)]
+**Example input:** ["I'm planning a 3-week Schengen trip in December — help with visa, insurance, accommodation."]
 
 1. [Who acts] [What it does] (uses: [tool / API / DB, if any]) (max 150 characters per step)
 2. [Who acts] [What it does and what it passes on]
 3. [Who acts] [What it does]
 4. [...]
 
-**Final output:** [What comes out at the end (max 150 characters)]
+**Final output:** [Plain-language checklist showing what's ready, what's missing, and one-click next steps — all logged.]
 
 **Anything special about how your workflow runs? (Optional)**
 
@@ -232,7 +236,7 @@ The Triage Agent gives a confidence score with every decision. Below 0.7, the me
 Answer Agent and goes straight to a human, so students never get a confident wrong answer.
 -->
 
-[Your answer, or N/A (max 400 characters)]
+Actions split into auto-execute (read-only lookups) vs. staged (anything that submits/pays/books) — staged actions always pause for explicit user confirmation before the Action Gateway fires the real API call.
 
 ---
 
@@ -242,12 +246,12 @@ Answer Agent and goes straight to a human, so students never get a confident wro
 
 | Layer | Technology |
 |-------|------------|
-| Frontend / Interface | [...] |
-| Backend | [...] |
-| Agent Framework | [e.g. LangGraph, CrewAI, AutoGen, custom code] |
-| Database / Storage | [...] |
-| Hosting | [e.g. local machine, cloud provider] |
-| Other | [...] |
+| Frontend / Interface | [React + Tailwind] |
+| Backend | [FastAPI (Python)] |
+| Agent Framework | [LangGraph + Claude tool-calling] |
+| Database / Storage | [PostgreSQL, Pinecone, S3/MinIO] |
+| Hosting | [AWS (ECS/S3)] |
+| Other | [Temporal (workflows), Vault (secrets), OPA] |
 
 ---
 
