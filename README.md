@@ -220,10 +220,11 @@ Example:
 
 **Example input:** ["I'm planning a 3-week Schengen trip in December — help with visa, insurance, accommodation."]
 
-1. [Who acts] [What it does] (uses: [tool / API / DB, if any]) (max 150 characters per step)
-2. [Who acts] [What it does and what it passes on]
-3. [Who acts] [What it does]
-4. [...]
+1. [PostgreSQL (database)] [stores users, documents, cases, and requirements] (uses: queried by every agent)
+2. [Pinecone/pgvector (vector DB)] [indexes bureaucracy rule text, passes retrieved chunks to the Tool-Calling Agent]
+3. [S3/MinIO (storage)] [holds encrypted document files while Postgres keeps only the pointers] (uses: vault layer)
+4. [Vault/KMS (secrets)] [holds encryption keys and API credentials, passes decrypted keys to Security Middleware]
+5. [Vault/KMS (secrets)] [holds encryption keys and API credentials, passes decrypted keys to Security Middleware]
 
 **Final output:** [Plain-language checklist showing what's ready, what's missing, and one-click next steps — all logged.]
 
