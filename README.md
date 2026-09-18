@@ -56,19 +56,17 @@ Build a production-ready agentic AI workflow that helps users navigate bureaucra
 
 **What are you building?**
 
-[Your answer (max 400 characters)]
+A secure AI agent that manages personal bureaucracy — visas, loans, GST, licenses, and more. It stores documents in an encrypted vault, remembers user context across cases, retrieves current requirements using RAG, matches documents to requirements, and executes approved actions with full auditability.
 
 **How does it solve the problem statement?**
 
-[Your answer (max 300 characters)]
+It replaces scattered documents and repetitive form-filling with one context-aware agent: it knows what documents the user has, retrieves applicable requirements, identifies what's missing, and guides or executes approved actions while protecting PII and logging every access.
 
 **Key features you're building for this hackathon:**
 
-<!-- Up to 5 features. -->
-
-- [Feature (max 100 characters)]
-- [Feature (max 100 characters)]
-- [Feature (max 100 characters)]
+Encrypted document vault with PII masking and per-access audit logging
+RAG-powered requirements engine for visa, loan, GST, and other bureaucracy workflows
+Agentic document-to-requirement matching with human-confirmed actions
 
 **What are you deliberately NOT doing? (Optional)**
 
@@ -78,17 +76,19 @@ Build a production-ready agentic AI workflow that helps users navigate bureaucra
 
 ## 5. Why an Agentic Approach?
 
-<!-- This is an Agentic AI hackathon, so this is one of the most important answers in the file. Be specific. "It uses an LLM" is not an answer. -->
+It decides which bureaucracy domain applies, checks the user’s vault against applicable requirements, identifies exactly what’s missing, chooses when to retrieve data or call a tool, and determines whether an action can be automated or requires user confirmation first.
+
+Why wouldn't a fixed script, if-else rules, or a simple chatbot be enough?
+
+Bureaucracy involves changing rules and messy, conditional cases that hardcoded logic can’t handle well. A chatbot can generate answers but doesn’t maintain document state, query systems, or execute actions. An agent dynamically reasons, retrieves data, and uses tools to complete workflows.
 
 **What does your agent decide or do on its own?**
 
-<!-- e.g. plans its steps, picks which tool to call, handles unexpected input, retries when something fails, hands work to another agent. -->
-
-[Your answer (max 400 characters)]
+It identifies which bureaucracy domain applies from your request, diffs your document vault against current requirements to find what's missing, picks whether to answer directly or call a tool (fetch a document, query live rules, submit a form), and judges when an action is safe to auto-run vs. needs your confirmation.
 
 **Why wouldn't a fixed script, if-else rules, or a simple chatbot be enough?**
 
-[Your answer (max 400 characters)]
+Bureaucracy rules change often (visa thresholds, tax slabs) — hardcoded if-else goes stale fast and can't be updated without a redeploy. A chatbot can't remember your documents across sessions or take action for you. Real cases also involve messy, conditional logic (duration, income, nationality) that doesn't reduce cleanly to static rules.
 
 ---
 
