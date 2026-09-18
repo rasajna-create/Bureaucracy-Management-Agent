@@ -289,27 +289,28 @@ Max 120 characters per bullet.
 
 ### Idea 1
 
-**Name:** [Short title (max 50 characters)]
+**Name:** Multimodal OCR Document Ingestion
 
-**What it is:** [max 200 characters]
+**What it is:** Automatically extracts validity dates, names, and numbers from uploaded PDF or image scans into vault metadata.
 
-**Why it matters:** [max 150 characters]
+**Why it matters:** Removes the need for users to manually enter document expiration dates and types.
 
-**How we'd build it:** [max 200 characters]
+**How we'd build it:** Integrate Tesseract OCR and layout-aware Vision models to populate Pydantic vault schemas.
 
-**Done when:** [How we could show it works (max 150 characters)]
+**Done when:** Uploading a raw passport image successfully registers its expiry date and nationality in SQLite.
+
 
 ### Idea 2
 
-**Name:** [Short title (max 50 characters)]
+**Name:** Proactive Expiry & Renewal Watchdog
 
-**What it is:** [max 200 characters]
+**What it is:** A scheduled worker that scans the vault weekly and notifies users before essential documents expire.
 
-**Why it matters:** [max 150 characters]
+**Why it matters:** Prevents last-minute emergency renewals when urgent travel or loan needs arise.
 
-**How we'd build it:** [max 200 characters]
+**How we'd build it:**  Celery / Cron worker checking expiry dates against current timestamp, sending alerts.
 
-**Done when:** [How we could show it works (max 150 characters)]
+**Done when:** Simulating a passport expiring in 30 days generates a proactive renewal notification card.
 
 ### Idea 3 (Optional)
 
