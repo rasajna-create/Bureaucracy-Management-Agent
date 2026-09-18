@@ -70,15 +70,17 @@ Agentic document-to-requirement matching with human-confirmed actions
 
 **What are you deliberately NOT doing? (Optional)**
 
-[Things you're leaving out, or N/A (max 200 characters)]
+We are deliberately not storing the PII data on a cloud database to protect privacy.
 
 ---
 
 ## 5. Why an Agentic Approach?
 
+**What does your agent decide or do on its own?**
+
 It decides which bureaucracy domain applies, checks the user’s vault against applicable requirements, identifies exactly what’s missing, chooses when to retrieve data or call a tool, and determines whether an action can be automated or requires user confirmation first.
 
-Why wouldn't a fixed script, if-else rules, or a simple chatbot be enough?
+**Why wouldn't a fixed script, if-else rules, or a simple chatbot be enough?**
 
 Bureaucracy involves changing rules and messy, conditional cases that hardcoded logic can’t handle well. A chatbot can generate answers but doesn’t maintain document state, query systems, or execute actions. An agent dynamically reasons, retrieves data, and uses tools to complete workflows.
 
