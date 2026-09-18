@@ -218,15 +218,15 @@ Example:
 **Final output:** A clear answer quoting the late-fee policy, plus a ticket raised with the accounts office.
 -->
 
-**Example input:** ["I'm planning a 3-week Schengen trip in December — help with visa, insurance, accommodation."]
+**Example input:** "I'm planning a 3-week Schengen trip in December — help with visa, insurance, accommodation."
 
-1. [PostgreSQL (database)] [stores users, documents, cases, and requirements] (uses: queried by every agent)
-2. [Pinecone/pgvector (vector DB)] [indexes bureaucracy rule text, passes retrieved chunks to the Tool-Calling Agent]
-3. [S3/MinIO (storage)] [holds encrypted document files while Postgres keeps only the pointers] (uses: vault layer)
-4. [Vault/KMS (secrets)] [holds encryption keys and API credentials, passes decrypted keys to Security Middleware]
-5. [Vault/KMS (secrets)] [holds encryption keys and API credentials, passes decrypted keys to Security Middleware]
+1. PostgreSQL (database) stores users, documents, cases, and requirements] (uses: queried by every agent)
+2. Pinecone/pgvector (vector DB) indexes bureaucracy rule text, passes retrieved chunks to the Tool-Calling Agent
+3. S3/MinIO (storage) holds encrypted document files while Postgres keeps only the pointers (uses: vault layer)
+4. Vault/KMS (secrets) holds encryption keys and API credentials, passes decrypted keys to Security Middleware
+5. Vault/KMS (secrets) holds encryption keys and API credentials, passes decrypted keys to Security Middleware
 
-**Final output:** [Plain-language checklist showing what's ready, what's missing, and one-click next steps — all logged.]
+**Final output:** Plain-language checklist showing what's ready, what's missing, and one-click next steps — all logged.
 
 **Anything special about how your workflow runs? (Optional)**
 
@@ -249,12 +249,12 @@ Actions split into auto-execute (read-only lookups) vs. staged (anything that su
 
 | Layer | Technology |
 |-------|------------|
-| Frontend / Interface | [React + Tailwind] |
-| Backend | [FastAPI (Python)] |
-| Agent Framework | [LangGraph + Claude tool-calling] |
-| Database / Storage | [PostgreSQL, Pinecone, S3/MinIO] |
-| Hosting | [AWS (ECS/S3)] |
-| Other | [Temporal (workflows), Vault (secrets), OPA] |
+| Frontend / Interface | React + Tailwind |
+| Backend | FastAPI (Python) |
+| Agent Framework | LangGraph + Claude tool-calling |
+| Database / Storage | PostgreSQL, Pinecone, S3/MinIO |
+| Hosting | AWS (ECS/S3) |
+| Other | Temporal (workflows), Vault (secrets), OPA |
 
 ---
 
@@ -288,7 +288,7 @@ Max 120 characters per bullet.
 
 **What we'd most like to be judged on:**
 
-[The requirements diff engine — how it checks a user's stored documents against live rule data and identifies exactly what's missing, then hands off cleanly to the agent's answer and staged-action flow.]
+The requirements diff engine — how it checks a user's stored documents against live rule data and identifies exactly what's missing, then hands off cleanly to the agent's answer and staged-action flow.
 
 ---
 
@@ -323,15 +323,15 @@ Max 120 characters per bullet.
 
 ### Idea 3 (Optional)
 
-**Name:** [Short title, or N/A (max 50 characters)]
+**Name:** Zero-Knowledge Proof Verification
 
-**What it is:** [max 200 characters]
+**What it is:** Verifies eligibility (such as income > ₹1.5L) without revealing exact salary slip details to third parties.
 
-**Why it matters:** [max 150 characters]
+**Why it matters:** Delivers privacy compliance aligned with stringent modern data protection regulations.
 
-**How we'd build it:** [max 200 characters]
+**How we'd build it:** Cryptographic hash generation on pre-approved attestations verified via API.
 
-**Done when:** [How we could show it works (max 150 characters)]
+**Done when:** The mock banking endpoint validates applicant income thresholds without receiving raw pay data.
 
 ---
 
@@ -339,4 +339,4 @@ Max 120 characters per bullet.
 
 <!-- Anything else you'd like us to know. -->
 
-[Your notes, or N/A (max 500 characters)]
+This system is built with security and reliability at the forefront. Sensitive user identifiers are protected by deterministic code constraints rather than relying purely on LLM prompt compliance.
