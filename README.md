@@ -106,13 +106,13 @@ Everyday citizens, study-abroad students, job seekers, and travelers needing a s
 
 <!-- What happens right now? Who struggles, and what does it cost them in time, money, effort, errors, or missed opportunities? -->
 
-Citizens manually dig up records, verify student visa funds, navigate work sponsorship proofs, and decipher tax rules from scratch. Re-uploading sensitive proofs across fragmented municipal, consular, and banking portals exposes unmasked IDs, while subtle document discrepancies trigger instant rejections.
+Applicants manually search dozens of government and bank websites, repeatedly upload sensitive documents across insecure portals, miss minor validity requirements, and face months of administrative delays or costly rejections.
 
 **The world with your solution, fully built and scaled to production:**
 
 <!-- Imagine your whole idea is built properly and used by everyone it's meant for. What's different? -->
 
-A secure sovereign vault where an adversarial agent pre-audits applications to guarantee approval, recycles proofs across domains (e.g. academic transcripts reused for employment visas), and issues purpose-bound zero-knowledge attestations to portals without ever revealing raw documents.
+Citizens maintain a single secure vault where an agent continuously verifies eligibility, automatically prepares verified paperwork, redacts PII, and submits applications via official APIs with zero repetitive effort.
 
 **What your hackathon build actually delivers today:**
 
