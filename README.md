@@ -268,19 +268,27 @@ Max 120 characters per bullet.
 
 **Working:**
 
-- [...]
+- Document upload, encryption, and storage in the vault
+- Chat interface with Claude for parsing bureaucracy requests
+- PostgreSQL schema for users, documents, cases, requirements
+- Basic audit logging on document access
 
 **Partly working, mocked, or hard-coded:**
 
-- [e.g. using sample data instead of a live API]
+- RAG rule lookup using a small hand-curated set of visa/GST rules instead of live scraped sources
+- Bank/embassy API calls are mocked with sample sandbox responses
+- Requirements diff engine covers Schengen visa and home loan only; other domains stubbed
 
 **Not working or not built yet:**
 
-- [...]
+- Real third-party API integrations (actual embassy, bank, GST portal submission)
+- Temporal-based long-running workflow orchestration
+- Role-based access control and multi-user permissions
+- PII masking via Presidio (currently manual regex-based masking)
 
 **What we'd most like to be judged on:**
 
-[The part you're proudest of or want us to look at closely (max 300 characters)]
+[The requirements diff engine — how it checks a user's stored documents against live rule data and identifies exactly what's missing, then hands off cleanly to the agent's answer and staged-action flow.]
 
 ---
 
